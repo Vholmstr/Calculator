@@ -1,4 +1,10 @@
-const numberButtons = document.querySelectorAll("#number-buttons-container button");
+const displays = document.querySelectorAll('#calculator-screen p')
+const numberButtons = document.querySelectorAll(".number-button");
+const operatorButtons = document.querySelectorAll(".operator-button");
+const equalsButton = document.querySelector("#equals-button");
+
+let numberInMemory = null;
+let currentOperator = null;
 
 function add (a, b) {
     return a + b;
@@ -39,6 +45,43 @@ function operate (operator, a, b) {
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        console.log("click");
+        displays[1].textContent += button.dataset.value;
     })
+})
+
+operatorButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (displays[1].textContent === "") {
+            currentOperator = button.dataset.value;
+        } else if (numberInMemory != null && displays[0].textContent === "") {
+            currentOperator = button.dataset.value;;
+            displays[0].textContent = numberInMemory;
+            displays[1].textContent = "";
+        } else if (numberInMemory === null && displays[1].textContent != "") {
+            numberInMemory = parseInt(displays[1].textContent);
+            currentOperator = button.dataset.value;
+            displays[0].textContent = numberInMemory;
+            displays[1].textContent = "";
+        } else if (numberInMemory != null && currentOperator != null) {
+            const temp = operate(currentOperator, numberInMemory, parseInt(displays[1].textContent));
+            numberInMemory = temp;
+            currentOperator = button.dataset.value;
+            displays[0].textContent = numberInMemory;
+            displays[1].textContent = "";
+        } else {
+            // Do nothing
+        }
+    })
+
+})
+
+equalsButton.addEventListener('click', () => {
+    if (numberInMemory != null && currentOperator != null && displays[1].textContent != "") {
+        const temp = parseInt(displays[1].textContent)
+        numberInMemory = operate(currentOperator, numberInMemory, temp);
+        currentOperator = null;
+        displays[1].textContent = numberInMemory;
+        displays[0].textContent = "";
+
+    }
 })
