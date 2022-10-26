@@ -8,13 +8,17 @@ body {
 
 p {
     margin: 5px;
-    font-size: 36px;
     font-weight: 500;
 }
 
 .smaller {
     font-size: 20px;
     color: grey;
+}
+
+.bigger{
+    font-size: 36px;
+    height: 40px;
 }
 
 .container {
@@ -46,6 +50,14 @@ p {
     font-size: 36px;
 }
 
+#equals-button {
+    background-color: lightcyan;
+    width: 170px;
+    height: 75px;
+    margin: 5px;
+    font-size: 36px;
+}
+
 #calculator-container {
     background-color: lightcoral;
     padding: 20px;
@@ -66,7 +78,7 @@ p {
 #number-buttons-container {
     flex-wrap: wrap;
     padding: 5px;
-    width: 350px;
+    width: 280px;
 }
 
 .operator-button {
