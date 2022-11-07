@@ -36,6 +36,8 @@ function operate (operator, a, b) {
         case "*":
             return mutiply(a,b);
         case "/":
+            if (a === 0 && b === 0)
+                return 0;
             return divide(a,b);
         case "**":
             return factorial(a,b);
@@ -46,13 +48,18 @@ function operate (operator, a, b) {
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
+        if (isNaN(parseInt(displays[1].textContent))) {
+            displays[1].textContent = "";
+        }
         displays[1].textContent += button.dataset.value;
     })
 })
 
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if (displays[1].textContent === "") {
+        if (isNaN(parseInt(displays[1].textContent))) {
+            displays[1].textContent = "";
+        } else if (displays[1].textContent === "") {
             currentOperator = button.dataset.value;
         } else if (numberInMemory != null && displays[0].textContent === "") {
             currentOperator = button.dataset.value;;
@@ -99,7 +106,8 @@ specialButtons.forEach(button => {
             numberInMemory = null;
         } else if (butt === "^") {
             let number = parseInt(displays[1].textContent);
-            displays[1].textContent = number*number;
+            if (number)
+                displays[1].textContent = number*number;
         }
     });
 })
