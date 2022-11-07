@@ -97,6 +97,9 @@ specialButtons.forEach(button => {
             displays[1].textContent = "";
             displays[0].textContent = "";
             numberInMemory = null;
+        } else if (butt === "^") {
+            let number = parseInt(displays[1].textContent);
+            displays[1].textContent = number*number;
         }
     });
 })
