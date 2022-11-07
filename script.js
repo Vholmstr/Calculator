@@ -1,6 +1,7 @@
 const displays = document.querySelectorAll('#calculator-screen p')
 const numberButtons = document.querySelectorAll(".number-button");
 const operatorButtons = document.querySelectorAll(".operator-button");
+const specialButtons = document.querySelectorAll(".special-button");
 const equalsButton = document.querySelector("#equals-button");
 
 let numberInMemory = null;
@@ -84,4 +85,18 @@ equalsButton.addEventListener('click', () => {
         displays[0].textContent = "";
 
     }
+})
+
+specialButtons.forEach(button => {
+    let buttonValue = button.dataset.value;
+    button.addEventListener('click', () => {
+        const butt = buttonValue;
+        if (butt === "C") {
+            displays[1].textContent = displays[1].textContent.slice(0, displays[1].textContent.length - 1);
+        } else if (butt === "AC") {
+            displays[1].textContent = "";
+            displays[0].textContent = "";
+            numberInMemory = null;
+        }
+    });
 })

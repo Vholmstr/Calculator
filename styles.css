@@ -23,7 +23,7 @@ p {
 
 .container {
     border-radius: 5px;
-    border: 1px solid black;
+    border: 5px solid black;
 }
 
 .column {
@@ -42,51 +42,53 @@ p {
     gap: 10px;
 }
 
-.number-button {
+.btn {
     background-color: lightcyan;
-    width: 75px;
-    height: 75px;
+    font-size: 26px;
+    width: 50px;
+    height: 50px;
     margin: 5px;
-    font-size: 36px;
+}
+
+
+.btn:hover {
+    background-color: rgb(192, 219, 219);
 }
 
 #equals-button {
-    background-color: lightcyan;
-    width: 170px;
-    height: 75px;
-    margin: 5px;
-    font-size: 36px;
+    width: 120px;
 }
 
 #calculator-container {
     background-color: lightcoral;
     padding: 20px;
-    width: 500px;
+    max-width: 400px;
 }
 
 #calculator-screen {
     background-color: aliceblue;
-    width: 450px;
+    width: 350px;
     height: 100px;
 }
 
 #calculator-buttons-container {
     background-color: antiquewhite;
-    width: 450px;
+    gap: 0px;
+    width: 350px;
+}
+
+#operator-buttons-container {
+    height: 350px;
+    padding: 5px;
+    margin-bottom: 10px;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 #number-buttons-container {
     flex-wrap: wrap;
     padding: 5px;
-    width: 280px;
-}
-
-.operator-button {
-    background-color: lightcyan;
-    width: 75px;
-    height: 75px;
-    margin: 5px;
-    font-size: 30px;
+    width: 200px;
 }
 
 #calculator-screen {
