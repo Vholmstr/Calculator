@@ -83,7 +83,7 @@ equalsButton.addEventListener('click', () => {
         currentOperator = null;
         displays[1].textContent = numberInMemory;
         displays[0].textContent = "";
-
+        numberInMemory = null;
     }
 })
 
